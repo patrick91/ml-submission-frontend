@@ -10,6 +10,7 @@ import { BrowserRouter } from "react-router-dom";
 import Header from "./components/header";
 
 import RegisterPage from "./pages/register";
+import SubmissionPage from "./pages/submission";
 
 const App = () => (
   <BrowserRouter>
@@ -24,6 +25,7 @@ const App = () => (
           <Switch>
             <Route exact path="/" component={() => <h1>Home</h1>} />
             <Route exact path="/register" component={RegisterPage} />
+            <Route exact path="/submission" component={SubmissionPage} />
             <Route component={() => <h1>Not Found</h1>} />
           </Switch>
         </Grid>
