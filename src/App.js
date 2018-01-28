@@ -11,6 +11,7 @@ import Header from "./components/header";
 
 import RegisterPage from "./pages/register";
 import SubmissionPage from "./pages/submission";
+import LeaderboardPage from "./pages/leaderboard";
 
 const App = () => (
   <BrowserRouter>
@@ -26,6 +27,7 @@ const App = () => (
             <Route exact path="/" component={() => <h1>Home</h1>} />
             <Route exact path="/register" component={RegisterPage} />
             <Route exact path="/submission" component={SubmissionPage} />
+            <Route exact path="/leaderboard" component={LeaderboardPage} />
             <Route component={() => <h1>Not Found</h1>} />
           </Switch>
         </Grid>
