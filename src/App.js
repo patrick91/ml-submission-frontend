@@ -9,6 +9,8 @@ import { BrowserRouter } from "react-router-dom";
 
 import Header from "./components/header";
 
+import RegisterPage from "./pages/register";
+
 const App = () => (
   <BrowserRouter>
     <MuiThemeProvider>
@@ -21,6 +23,7 @@ const App = () => (
         <Grid item xs={12}>
           <Switch>
             <Route exact path="/" component={() => <h1>Home</h1>} />
+            <Route exact path="/register" component={RegisterPage} />
             <Route component={() => <h1>Not Found</h1>} />
           </Switch>
         </Grid>
