@@ -64,7 +64,9 @@ class Header extends React.Component {
               <Link to="/">PyCon Nove</Link>
             </Typography>
 
-            <Button color="inherit">Login</Button>
+            <Button component={Link} to="/login" color="inherit">
+              Login
+            </Button>
           </Toolbar>
         </AppBar>
         <Drawer open={this.state.drawerOpen} onClose={this.toggleDrawer(false)}>

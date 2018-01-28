@@ -12,6 +12,7 @@ import Header from "./components/header";
 import RegisterPage from "./pages/register";
 import SubmissionPage from "./pages/submission";
 import LeaderboardPage from "./pages/leaderboard";
+import LoginPage from "./pages/login";
 
 const App = () => (
   <BrowserRouter>
@@ -26,6 +27,7 @@ const App = () => (
           <Switch>
             <Route exact path="/" component={() => <h1>Home</h1>} />
             <Route exact path="/register" component={RegisterPage} />
+            <Route exact path="/login" component={LoginPage} />
             <Route exact path="/submission" component={SubmissionPage} />
             <Route exact path="/leaderboard" component={LeaderboardPage} />
             <Route component={() => <h1>Not Found</h1>} />
