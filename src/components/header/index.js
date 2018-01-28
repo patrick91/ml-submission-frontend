@@ -76,28 +76,35 @@ class Header extends React.Component {
           >
             <div className={classes.list}>
               <List>
-                <ListItem button>
+                <ListItem button component={Link} to="/">
                   <ListItemIcon>
                     <HomeIcon />
                   </ListItemIcon>
                   <ListItemText primary="Home" />
                 </ListItem>
-                <ListItem button>
+                <ListItem button component={Link} to="/leaderboard">
                   <ListItemIcon>
                     <StarIcon />
                   </ListItemIcon>
                   <ListItemText primary="Leaderboard" />
                 </ListItem>
-                <ListItem button>
+                <ListItem button component={Link} to="/register">
                   <ListItemIcon>
                     <AccountCircleIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Registration" />
+                  <ListItemText primary="Register" />
                 </ListItem>
               </List>
               <Divider />
               <List>
-                <ListItem button>
+                <ListItem
+                  button
+                  component={({ children, ...props }) => (
+                    <a {...props}>{children}</a>
+                  )}
+                  target="_blank"
+                  href="https://www.pycon.it"
+                >
                   <ListItemIcon>
                     <ExitIcon />
                   </ListItemIcon>
