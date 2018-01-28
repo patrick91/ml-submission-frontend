@@ -5,6 +5,17 @@ import AppBar from "material-ui/AppBar";
 import Toolbar from "material-ui/Toolbar";
 import Typography from "material-ui/Typography";
 import Button from "material-ui/Button";
+import Drawer from "material-ui/Drawer";
+import IconButton from "material-ui/IconButton";
+import MenuIcon from "material-ui-icons/Menu";
+import List from "material-ui/List";
+import Divider from "material-ui/Divider";
+import { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
+import HomeIcon from "material-ui-icons/Home";
+import UploadIcon from "material-ui-icons/FileUpload";
+import StarIcon from "material-ui-icons/Star";
+import AccountCircleIcon from "material-ui-icons/AccountCircle";
+import ExitIcon from "material-ui-icons/ExitToApp";
 
 import { Link } from "react-router-dom";
 
@@ -14,25 +25,92 @@ const styles = {
   },
   flex: {
     flex: 1
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20
+  },
+  list: {
+    width: 250
   }
 };
 
-const Header = props => {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Toolbar>
-          <Typography type="title" color="inherit" className={classes.flex}>
-            <Link to="/">PyCon Nove</Link>
-          </Typography>
+class Header extends React.Component {
+  state = {
+    drawerOpen: false
+  };
 
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-};
+  toggleDrawer = open => () => {
+    this.setState({
+      drawerOpen: open
+    });
+  };
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <AppBar position="static" color="default">
+          <Toolbar>
+            <IconButton
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="Menu"
+              onClick={this.toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography type="title" color="inherit" className={classes.flex}>
+              <Link to="/">PyCon Nove</Link>
+            </Typography>
+
+            <Button color="inherit">Login</Button>
+          </Toolbar>
+        </AppBar>
+        <Drawer open={this.state.drawerOpen} onClose={this.toggleDrawer(false)}>
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={this.toggleDrawer(false)}
+            onKeyDown={this.toggleDrawer(false)}
+          >
+            <div className={classes.list}>
+              <List>
+                <ListItem button>
+                  <ListItemIcon>
+                    <HomeIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Home" />
+                </ListItem>
+                <ListItem button>
+                  <ListItemIcon>
+                    <StarIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Leaderboard" />
+                </ListItem>
+                <ListItem button>
+                  <ListItemIcon>
+                    <AccountCircleIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Registration" />
+                </ListItem>
+              </List>
+              <Divider />
+              <List>
+                <ListItem button>
+                  <ListItemIcon>
+                    <ExitIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="PyCon Nove" />
+                </ListItem>
+              </List>
+            </div>
+          </div>
+        </Drawer>
+      </div>
+    );
+  }
+}
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired
